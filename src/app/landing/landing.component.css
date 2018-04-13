@@ -1,0 +1,44 @@
+section {
+    min-height: 100vh;
+}
+
+.to-top {
+    position: fixed;
+    bottom: 5vh;
+    right: 5vw;
+    min-width: 50px;
+    min-height: 50px;
+    background-color: #f2f2f2;
+    color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 0;
+}
+
+.to-top:hover {
+    background-color: #232323;
+    color: #f2f2f2;
+}
+
+.to-top:focus {
+    outline: none;
+}
+
+
+.introduction {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.introduction h1 {
+    font-size: 3em;
+    margin-bottom: 7.5px;
+}
+
+.introduction h3 {
+    font-size: 2em;
+    margin-top: 7.5px;
+}
