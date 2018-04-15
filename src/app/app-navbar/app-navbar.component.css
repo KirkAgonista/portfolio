@@ -26,11 +26,10 @@ nav button:hover {
     color: #1d1d1d;
 }
 .hide, .on-hide {
-    /*display: none;*/
+    background-color: #232323;
     transform: translateX(250px);
 }
 .show-menu, .on-show-menu {
-    /*display: block;*/
     background-color: #232323;
     transform: translateX(0px);
 }
