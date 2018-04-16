@@ -1,10 +1,13 @@
 <div class="container">
     <button 
-    class="to-top" 
-    [class.top]="top" 
+    class="to-top animated infinite" 
+    [class.top]="top"
+    [class.tada]="hoverTop"
     [ngx-scroll-to]="'top'"
+    on-mouseover= "onMouseEnter()"
+    on-mouseleave= "onMouseLeave()"
     [ngx-scroll-to-easing]="ngxScrollToEasing">
-        Top
+        <i class="fas fa-angle-double-up fa-3x"></i>
     </button>
     <section class="introduction" id="top">
         <h1>Marcin Dobrzański</h1>
@@ -21,22 +24,32 @@
         <h3>Work</h3>
         <h4>Personal projects: </h4>
         <div>
-            ...
+            <mat-card *ngFor="let project of projects">
+                <mat-card-title>{{project.title}}</mat-card-title>
+                <img mat-card-image [src]="project.img[0]"/>
+                <mat-card-subtitle>
+                Used technologies:
+                    <span *ngFor="let technology of project.technologies">{{technology}}</span>
+                </mat-card-subtitle>
+                <mat-card-content>{{project.caption}}</mat-card-content>
+            </mat-card>
         </div>
     </section>
     <footer detect-scroll (onScroll)="handleScroll($event)" [bottomOffset]="2000">
         <div class="complete-sign">
             <div class="sign">
-                <h4>Marcin Dobrzański</h4>
+                Website 
                 <ul><li></li></ul>
             </div>
-            <div>by myself</div>
+            <div><h4>by Marcin Dobrzański</h4></div>
         </div>
         <div class="social-media" id="contact">
-            <span>LinkedIn</span>
-            <span>Twitter</span>
-            <span>Hangouts</span>
-            <span>Skype</span>
+            <span *ngFor="let link of links" [matTooltip]="link.text" matTooltipShowDelay="300">
+                <a [href]="link.url">
+                    <i [class]="link.icon"></i>
+                </a>
+            </span>
+
         </div>
     </footer>
 </div>

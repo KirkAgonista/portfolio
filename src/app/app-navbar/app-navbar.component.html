@@ -1,10 +1,12 @@
 <header>
   <nav>
-      <button [ngClass]="status ? 'on-show-menu' : 'on-hide'" [ngClass] (click)="onShowHideMenu()"></button>
+      <button [ngClass]="status ? 'on-show-menu' : 'on-hide'" (click)="onShowHideMenu()">
+        <i class="fas fa-angle-double-left"></i>
+      </button>
       <span [ngClass]="status ? 'show-menu' : 'hide'">
-        <button [ngx-scroll-to]="'about'" [ngx-scroll-to-easing]="ngxScrollToEasing">About</button>
-        <button [ngx-scroll-to]="'work'" [ngx-scroll-to-easing]="ngxScrollToEasing">Work</button>
-        <button [ngx-scroll-to]="'contact'" [ngx-scroll-to-easing]="ngxScrollToEasing">Contact</button>
+      <button [ngx-scroll-to]="'about'" [ngx-scroll-to-easing]="ngxScrollToEasing">About</button>
+      <button [ngx-scroll-to]="'work'" [ngx-scroll-to-easing]="ngxScrollToEasing">Work</button>
+      <button [ngx-scroll-to]="'contact'" [ngx-scroll-to-easing]="ngxScrollToEasing">Contact</button>
       </span>
   </nav>
 </header>

@@ -4,7 +4,7 @@ import { ScrollToAnimationEasing } from '@nicky-lenaers/ngx-scroll-to';
 @Component({
   selector: 'app-navbar',
   templateUrl: './app-navbar.component.html',
-  styleUrls: ['./app-navbar.component.css']
+  styleUrls: ['./app-navbar.component.scss']
 })
 export class AppNavbarComponent implements OnInit {
   status: boolean = false;

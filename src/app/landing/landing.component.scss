@@ -1,0 +1,227 @@
+section {
+  min-height: 100vh;
+  &:not(.introduction) {
+    width: 80%;
+    margin: 0 auto;
+  }
+}
+
+.to-top {
+  position: fixed;
+  bottom: 5vh;
+  right: 5vw;
+  min-width: 50px;
+  min-height: 50px;
+  background-color: #f2f2f2;
+  color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 0;
+  opacity: 0;
+  transition: all 0.3s;
+  &:hover {
+    background-color: #232323;
+    color: #f2f2f2;
+  }
+  &:focus {
+    outline: none;
+  }
+}
+
+.introduction {
+  display: flex;
+  background-color: #4b4a63;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  h1 {
+    font-size: 3em;
+    margin-bottom: 7.5px;
+    text-align: center;
+  }
+  h3 {
+    font-size: 2em;
+    margin-top: 7.5px;
+  }
+}
+
+.about-me {
+  background-color: #494849;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.work {
+  background-color: #d8d8d8;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-wrap: wrap;
+  color: black;
+  h3 {
+    font-size: 4em;
+    margin: 0.1em 0;
+  }
+  h4 {
+    font-size: 2.5em;
+    margin: 0.1em 0;
+  }
+  div {
+    align-self: stetch;
+    mat-card {
+      margin: 15px;
+      mat-card-subtitle {
+        margin-top: 5px;
+        span {
+          margin: 0 3px;
+        }
+      }
+    }
+  }
+}
+
+footer {
+  background-color: #232323;
+  display: flex;
+  flex-wrap: no-wrap;
+  justify-content: space-between;
+  align-items: center;
+  height: 12vh;
+  li {
+    list-style: none;
+  }
+}
+
+.complete-sign {
+  display: flex;
+  flex-direction: column;
+  div {
+    padding: 0 15px;
+  }
+}
+
+.sign {
+  display: flex;
+  align-items: center;
+  padding: 0 15px;
+  height: 50px;
+  h4 {
+    margin: 0;
+  }
+  ul {
+    width: auto;
+    padding: 0 10px;
+    li {
+      overflow: hidden;
+      /* Ensures the content is not revealed until the animation */
+      white-space: nowrap;
+      /* Keeps the content on a single line */
+      margin: 0;
+      /* Gives that scrolling effect as the typing happens */
+      letter-spacing: .15em;
+      /* Adjust as needed */
+      &:after {
+        content: "developed";
+      }
+    }
+  }
+}
+
+.social-media {
+  display: flex;
+  padding: 0 15px;
+  span {
+    padding: 10px;
+    a {
+        color: hsla(360, 100%, 100%, 1);
+      &:visited {
+        color: hsla(360, 100%, 100%, 1);
+      }
+      &:hover {
+        animation: colorChange 4s infinite alternate;
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 600px) {
+  .sign ul li {
+    border-right: .15em solid #f2f2f2;
+    /* The typwriter cursor */
+    animation: typing 3.5s steps(17) infinite, blink-caret 0.75s steps(17) infinite;
+    &:after {
+      animation: change-text 7s infinite;
+    }
+  }
+}
+
+.top {
+  bottom: 12vh;
+  opacity: 1;
+}
+/* The typing effect */
+@keyframes typing {
+  from, to {
+    width: 1%;
+  }
+  
+  45%, 50%, 55% {
+    width: 100%;
+  }
+}
+
+
+/* The typewriter cursor effect */
+@keyframes blink-caret {
+  from, to {
+    border-color: transparent;
+  }
+
+  50% {
+    border-color: #f2f2f2;
+  }
+}
+
+
+@keyframes change-text {
+  0% {
+    content: "";
+  }
+
+  2% {
+    content: "developed";
+  }
+
+  50% {
+    content: "developed";
+  }
+
+  51% {
+    content: "nailed";
+  }
+
+  98% {
+    content: "nailed";
+  }
+
+  100% {
+    content: "";
+  }
+}
+
+@mixin eachFrame($number){
+  $percent: ($number * 1%);
+  #{$percent} {
+   @content;
+  }
+}
+@keyframes colorChange {
+  @for $i from 1 through 100 {
+    @include eachFrame($i){
+      $hue: ($i * 3.6);
+      color: hsla($hue,50%, 50%, 1);
+    }
+  }
+}

@@ -1,0 +1,44 @@
+nav {
+  display: flex;
+  flex-flow: row nowrap;
+  flex: 1 100%;
+  justify-content: flex-end;
+  position: fixed;
+  top: 5vh;
+  right: 0;
+  padding: 0;
+  height: 40px;
+  button {
+    height: 100%;
+    color: #f2f2f2;
+    padding: 0 15px;
+    text-transform: uppercase;
+    border: 0;
+    cursor: pointer;
+    background-color: #232323;
+    outline: none;
+    &:hover {
+      background-color: #f2f2f2;
+      color: #1d1d1d;
+    }
+  }
+}
+
+.hide, .on-hide {
+  background-color: #232323;
+  transform: translateX(250px);
+}
+
+.show-menu {
+  background-color: #232323;
+  transform: translateX(0px);
+}
+
+.on-show-menu {
+  background-color: #232323;
+  transform: translateX(0px) scale(-1, 1);
+}
+
+nav button, .hide, .show-menu {
+  transition: transform 0.3s ease-out;
+}
