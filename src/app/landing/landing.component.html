@@ -3,39 +3,81 @@
     class="to-top animated infinite" 
     [class.top]="top"
     [class.tada]="hoverTop"
+    [class.topGray]="topLight"
+    [class.topDark]="topDark"
+    [class.topBlue]="topBlue"
     [ngx-scroll-to]="'top'"
     on-mouseover= "onMouseEnter()"
     on-mouseleave= "onMouseLeave()"
     [ngx-scroll-to-easing]="ngxScrollToEasing">
         <i class="fas fa-angle-double-up fa-3x"></i>
     </button>
-    <section class="introduction" id="top">
+    <section class="introduction" id="top"
+    >
         <h1>Marcin Dobrzański</h1>
         <h3>Freelance Web Developer</h3>
     </section>
-    <section class="about-me" id="about">
+    <section class="about-me hide-on-init" 
+    
+    animateOnScroll animationName="animated bounceInUp" 
+    id="about">
         <h3>"Simple solutions, but with little <span>oomph</span> "</h3>
         <p>Hi I am Marcin and I am freelance web developer and I live in Poland. 
         I always aim for simple solutions, but always I try to give my projects 
         some life. I am open to new opportunities be it full-time job or project
         just contact me!</p>
     </section>
-    <section class="work" id="work">
-        <h3>Work</h3>
-        <h4>Personal projects: </h4>
-        <div>
-            <mat-card *ngFor="let project of projects">
-                <mat-card-title>{{project.title}}</mat-card-title>
-                <img mat-card-image [src]="project.img[0]"/>
-                <mat-card-subtitle>
-                Used technologies:
-                    <span *ngFor="let technology of project.technologies">{{technology}}</span>
-                </mat-card-subtitle>
-                <mat-card-content>{{project.caption}}</mat-card-content>
-            </mat-card>
-        </div>
+    <section class="work" id="work"
+    >
+        <svg class="loading" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+        	 width="574.558px" height="120px" viewBox="0 0 574.558 120" enable-background="new 0 0 574.558 120" xml:space="preserve">
+          <defs>
+            <pattern id="water" width=".25" height="1.1" patternContentUnits="objectBoundingBox">
+              <path fill="#fff" d="M0.25,1H0c0,0,0-0.659,0-0.916c0.083-0.303,0.158,0.334,0.25,0C0.25,0.327,0.25,1,0.25,1z"/>
+            </pattern>
+            
+            <text id="text" transform="matrix(1 0 0 1 0 100.7852)" font-family="'Cabin Condensed'" font-size="80">Personal Projects</text>
+            
+            <mask id="text_mask">
+              <use x="0" y="0" xlink:href="#text" opacity="1" fill="#ffffff"/>
+            </mask>
+          </defs>
+         
+        	  <!--<use x="0" y="0" xlink:href="#text" fill="#222"/>-->
+          
+          <rect class="water-fill" mask="url(#text_mask)" fill="url(#water)" x="-400" y="0" width="1600" height="120"/>
+          
+        </svg>
+            <ui-carousel [infinite]="false" [fade]="false" [speed]="500" height="94vh" width="94vw" [autoPlay]="false">
+                <ui-carousel-item *ngFor="let project of projects">
+                    <div style="background: #2c4bc1; width: 100%; height: 100%; padding-top: 10px"><mat-card  class="hide-on-init" animateOnScroll animationName="animated bounceInUp">
+                        <mat-card-title 
+                        class="hide-on-init" 
+                        animateOnScroll animationName="animated fadeInLeft">{{project.title}}</mat-card-title>
+                        <img mat-card-image [src]="project.img[0]"/>
+                        <section class="card-content">
+                            <div>
+                                <mat-card-subtitle
+                                class="hide-on-init" animateOnScroll animationName="animated fadeInDown">
+                                Used technologies:
+                                    <span *ngFor="let technology of project.technologies">{{technology}}</span>
+                                </mat-card-subtitle>
+                                <mat-card-content
+                                class="hide-on-init" animateOnScroll animationName="animated fadeInUp"
+                                >{{project.caption}}</mat-card-content>
+                            </div>
+                            <mat-card-actions>
+                                <a class="hide-on-init" animateOnScroll animationName="animated fadeInRight"
+                                mat-raised-button color="primary"
+                                [href]="project.link">Visit</a>
+                            </mat-card-actions>
+                        </section>
+                    </mat-card>
+                    </div>
+                </ui-carousel-item>
+            </ui-carousel>
     </section>
-    <footer detect-scroll (onScroll)="handleScroll($event)" [bottomOffset]="2000">
+    <footer>
         <div class="complete-sign">
             <div class="sign">
                 Website 
