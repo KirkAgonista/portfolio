@@ -10,7 +10,6 @@ import { ScrollToAnimationEasing } from '@nicky-lenaers/ngx-scroll-to';
   styleUrls: ['./landing.component.scss']
 })
 export class LandingComponent implements OnInit {
-
   public ngxScrollToDuration: number;
   public ngxScrollToEasing: ScrollToAnimationEasing;
 
@@ -18,6 +17,7 @@ export class LandingComponent implements OnInit {
   public topLight: boolean = false;
   public topDark: boolean = false;
   public topBlue: boolean = false;
+  public topBorderBottom: boolean = false;
   public hoverTop: boolean = false;
   
   links = [
@@ -70,36 +70,47 @@ export class LandingComponent implements OnInit {
  @HostListener("window:scroll", [])
   onWindowScroll() {
     let scrollYPosition = this.window.pageYOffset || this.document.documentElement.scrollTop || this.document.body.scrollTop || 0;
-    console.log(scrollYPosition);
-    if (scrollYPosition > 168) {
+    let scrollYMaxPosition = this.document.body.scrollHeight - this.document.body.clientHeight;
+    let scrollYPositionPercentage = (Math.floor(scrollYPosition)/scrollYMaxPosition)*100;
+    
+    if (scrollYPositionPercentage > 7.57) {
       this.top = true;
-    } else if (this.top && scrollYPosition < 168) {
+    } else if (this.top && scrollYPositionPercentage < 7.57) {
       this.top = false;
     }
-    if (scrollYPosition > 168 && scrollYPosition < 1185) {
+    if (scrollYPositionPercentage > 7.57 && scrollYPositionPercentage < 52.8) {
       this.topLight = true;
-    } else if (this.topLight && scrollYPosition < 168 || scrollYPosition > 1185){
+    } else if (this.topLight && scrollYPositionPercentage < 7.57 || scrollYPositionPercentage > 52.8){
       this.topLight = false;
     }
-    if (scrollYPosition > 1185 && scrollYPosition < 1344) {
+    if (scrollYPositionPercentage > 52.8 && scrollYPositionPercentage < 59.2) {
       this.topDark = true;
-    } else if (this.topDark && scrollYPosition < 1185){
+    } else if (this.topDark && scrollYPositionPercentage < 52.8){
       this.topDark = false;
     }
     
-    if (scrollYPosition > 1344) {
+    if (scrollYPositionPercentage > 59.2) {
       this.topBlue = true;
-    } else if (this.topBlue && scrollYPosition < 1344){
+    } else if (this.topBlue && scrollYPositionPercentage < 59.2){
       this.topBlue = false;
     }
     
+    if (this.hoverTop) {
+      this.topBorderBottom = false;
+    } else if(Math.floor(scrollYPosition) === scrollYMaxPosition) {
+      this.topBorderBottom = true;
+    } else if (this.topBorderBottom && Math.floor(scrollYPosition) !== scrollYMaxPosition){
+      this.topBorderBottom = false;
+    }
   
 }
   
   onMouseEnter() {
     this.hoverTop = true;
+    this.topBorderBottom = false;
   }
   onMouseLeave() {
     this.hoverTop = false;
+    this.onWindowScroll();
   }
 }

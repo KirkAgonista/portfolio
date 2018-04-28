@@ -14,7 +14,7 @@ nav {
     color: #f2f2f2;
     padding: 0 15px;
     text-transform: uppercase;
-    border: 0;
+    border: 2px solid #232323;
     cursor: pointer;
     background-color: #232323;
     outline: none;
@@ -27,7 +27,7 @@ nav {
 
 .hide, .on-hide {
   background-color: #232323;
-  transform: translateX(250px);
+  transform: translateX(160px);
 }
 
 .show-menu {

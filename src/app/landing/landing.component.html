@@ -3,9 +3,10 @@
     class="to-top animated infinite" 
     [class.top]="top"
     [class.tada]="hoverTop"
-    [class.topGray]="topLight"
-    [class.topDark]="topDark"
-    [class.topBlue]="topBlue"
+    [class.to-top-gray]="topLight"
+    [class.to-top-dark]="topDark"
+    [class.to-top-blue]="topBlue"
+    [class.to-top-border]="topBorderBottom"
     [ngx-scroll-to]="'top'"
     on-mouseover= "onMouseEnter()"
     on-mouseleave= "onMouseLeave()"
@@ -19,7 +20,7 @@
     </section>
     <section class="about-me hide-on-init" 
     
-    animateOnScroll animationName="animated bounceInUp" 
+    animateOnScroll animationName="animated bounceInDown" 
     id="about">
         <h3>"Simple solutions, but with little <span>oomph</span> "</h3>
         <p>Hi I am Marcin and I am freelance web developer and I live in Poland. 
@@ -29,26 +30,9 @@
     </section>
     <section class="work" id="work"
     >
-        <svg class="loading" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-        	 width="574.558px" height="120px" viewBox="0 0 574.558 120" enable-background="new 0 0 574.558 120" xml:space="preserve">
-          <defs>
-            <pattern id="water" width=".25" height="1.1" patternContentUnits="objectBoundingBox">
-              <path fill="#fff" d="M0.25,1H0c0,0,0-0.659,0-0.916c0.083-0.303,0.158,0.334,0.25,0C0.25,0.327,0.25,1,0.25,1z"/>
-            </pattern>
-            
-            <text id="text" transform="matrix(1 0 0 1 0 100.7852)" font-family="'Cabin Condensed'" font-size="80">Personal Projects</text>
-            
-            <mask id="text_mask">
-              <use x="0" y="0" xlink:href="#text" opacity="1" fill="#ffffff"/>
-            </mask>
-          </defs>
-         
-        	  <!--<use x="0" y="0" xlink:href="#text" fill="#222"/>-->
-          
-          <rect class="water-fill" mask="url(#text_mask)" fill="url(#water)" x="-400" y="0" width="1600" height="120"/>
-          
-        </svg>
-            <ui-carousel [infinite]="false" [fade]="false" [speed]="500" height="94vh" width="94vw" [autoPlay]="false">
+       <h3>Work</h3>
+       <h4>Personal projects:</h4>
+            <ui-carousel style="opacity: 0.9;" [infinite]="false" [fade]="false" [speed]="500" height="94vh" width="94vw" [autoPlay]="false">
                 <ui-carousel-item *ngFor="let project of projects">
                     <div style="background: #2c4bc1; width: 100%; height: 100%; padding-top: 10px"><mat-card  class="hide-on-init" animateOnScroll animationName="animated bounceInUp">
                         <mat-card-title 
@@ -77,7 +61,7 @@
                 </ui-carousel-item>
             </ui-carousel>
     </section>
-    <footer>
+    <footer class="contact" [class.footerOpacity]="topBlue" id="contact">
         <div class="complete-sign">
             <div class="sign">
                 Website 
@@ -85,7 +69,7 @@
             </div>
             <div><h4>by Marcin Dobrzański</h4></div>
         </div>
-        <div class="social-media" id="contact">
+        <div class="social-media">
             <span *ngFor="let link of links" [matTooltip]="link.text" matTooltipShowDelay="300">
                 <a [href]="link.url">
                     <i [class]="link.icon"></i>
